@@ -1,4 +1,4 @@
-name: build.yaml
+name: 打包项目
 on:
   workflow_dispatch:
     inputs:
