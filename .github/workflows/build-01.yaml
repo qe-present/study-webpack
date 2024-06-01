@@ -43,5 +43,8 @@ jobs:
         with:
           name: site
       - name: 查看文件 📂
-        run: ls -R
-
+        run: ls -R site
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: 'site'
