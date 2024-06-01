@@ -41,7 +41,7 @@ jobs:
       - name: 下载 Artifacts 🔻 # The built project is downloaded into the 'site' folder.
         uses: actions/download-artifact@v4
         with:
-          name: site
+          name: site/app
       - name: 查看文件 📂
         run: ls -R
       - name: Deploy 🚀
