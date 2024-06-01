@@ -26,7 +26,7 @@ jobs:
       - name: 上传 Artifacts 🔺
         uses: actions/upload-artifact@v4
         with:
-          name: build
+          name: site
           path: 01-build
 
   deploy:
@@ -41,10 +41,10 @@ jobs:
       - name: 下载 Artifacts 🔻 # The built project is downloaded into the 'site' folder.
         uses: actions/download-artifact@v4
         with:
-          name: build
+          name: site
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
 
-          folder: 'build'
+          folder: 'site'
