@@ -6,9 +6,11 @@ on:
             description: '选择要构建的文件编号'
             required: true
             default: 'true'
+permissions:
+  contents: write
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: 读取仓库
         uses: actions/checkout@v4
@@ -20,7 +22,7 @@ jobs:
         run: |
           cd 01-base/base-01
           npm install
-      - name: Build
+      - name: 打包
         run: |
           cd 01-base/base-01
           npm run build
