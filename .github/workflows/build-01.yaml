@@ -1,11 +1,5 @@
 name: 打包项目
-on:
-  workflow_dispatch:
-    inputs:
-        build:
-            description: '选择要构建的文件编号'
-            required: true
-            default: 'true'
+on: push
 permissions:
   contents: write
 jobs:
