@@ -7,7 +7,7 @@ module.exports = {
     output: {
         //path:输出路径 绝对路径 __dirname:当前文件所在目录 + dist:dist目录
         // path: path.resolve(__dirname, 'dist'),
-        path: path.resolve(__dirname, '../dist'),
+        path: path.resolve(__dirname, '../../01-build'),
 
         //filename:输出文件名
         filename: 'static/js/main.js',
