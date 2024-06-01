@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log(-1),console.log(function(){for(var o=arguments.length,n=new Array(o),e=0;e<o;e++)n[e]=arguments[e];return n.reduce((function(o,n){return o+n}),0)}(1,2,3)),console.log(111111)})();
