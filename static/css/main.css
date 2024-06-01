@@ -1,0 +1,47 @@
+.box1 {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+}
+
+@font-face {
+  font-family: "iconfont"; /* Project id 3375413 */
+  src: url(../../static/media/c39e78e1.woff2?t=1651653684611) format('woff2'),
+       url(../../static/media/822a5c27.woff?t=1651653684611) format('woff'),
+       url(../../static/media/7e4c9746.ttf?t=1651653684611) format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-aixin:before {
+  content: "\e8ab";
+}
+
+.icon-bianji:before {
+  content: "\e8ac";
+}
+
+.icon-Dyanjing:before {
+  content: "\e8ad";
+}
+
+.icon-caidan:before {
+  content: "\e8ae";
+}
+
+
+.box2 {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+
+.box3{width:100px;height:100px;background-color:blue;background-image:url(../../static/images/4f3e9e97.jpg);background-size:cover}
+.box4{width:100px;height:100px;background-color:#ff0}
+.box5{width:100px;height:100px;background-color:#9acd32}
