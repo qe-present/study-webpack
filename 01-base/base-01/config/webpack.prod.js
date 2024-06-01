@@ -1,6 +1,7 @@
 const path = require('path'); //引入path模块
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
     //入口
     entry: './src/main.js', //相对路径
@@ -8,7 +9,7 @@ module.exports = {
     output: {
         //path:输出路径 绝对路径 __dirname:当前文件所在目录 + dist:dist目录
         // path: path.resolve(__dirname, 'dist'),
-        path: path.resolve(__dirname, '../../01-build'),
+        path: path.resolve(__dirname, '../../../01-build'),
 
         //filename:输出文件名
         filename: 'static/js/main.js',
@@ -21,7 +22,7 @@ module.exports = {
             {
                 test: /\.css$/, // \.转义.  $以.css结尾
                 use: [// 从右到左解析,从下到上执行
-                    'style-loader', // style-loader:将js模块中的样式插入到html中
+                    MiniCssExtractPlugin.loader, //提取css文件到单独的文件中
                     'css-loader' //css-loader: 将css文件转换为commonjs的模块到js中
                 ],
 
@@ -31,7 +32,7 @@ module.exports = {
                 use: [
                     // loader 只能使用1个loader
                     // use 可以使用多个loader
-                    'style-loader',
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     'less-loader',
                 ],
@@ -39,7 +40,7 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/,
                 use: [
-                    'style-loader',
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     'sass-loader',
                 ]
@@ -47,7 +48,7 @@ module.exports = {
             {
                 test: /\.styl$/,
                 use: [
-                    'style-loader',
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     'stylus-loader',
                 ]
@@ -94,23 +95,22 @@ module.exports = {
     plugins: [
         new ESLintPlugin({
             // 检查src目录下所有文件
-            context: path.resolve(__dirname, 'src'),
+            context: path.resolve(__dirname, '../src'),
         }),
         new HtmlWebpackPlugin(
             {
                 // 新的html文件名 会自动放到output.path目录下 默认是index.html并且自动引入打包的js文件
-                template: path.resolve(__dirname, 'public/index.html'),
+                template: path.resolve(__dirname, '../public/index.html'),
+            }
+        ),
+        new MiniCssExtractPlugin(
+            {
+                filename: 'static/css/[name].css'
             }
         )
+
     ],
-    //devServer配置
-    devServer: {
-        host: 'localhost', // 主机名
-        port: 9000, // 端口号
-        open: true, // 自动打开浏览器
-        hot: true, // 热更新
-        historyApiFallback: true, // 解决刷新404问题
-    },
     //模式
-    mode: 'development' // development:开发模式    production:生产模式
+    mode: 'production' // development:开发模式    production:生产模式
 }
+// 生产模式

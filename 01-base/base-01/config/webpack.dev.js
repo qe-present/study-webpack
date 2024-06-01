@@ -8,11 +8,10 @@ module.exports = {
     output: {
         //path:输出路径 绝对路径 __dirname:当前文件所在目录 + dist:dist目录
         // path: path.resolve(__dirname, 'dist'),
-        path: path.resolve(__dirname, '../../01-build'),
+        path: undefined, // 开发环境不需要配置输出路径
 
         //filename:输出文件名
         filename: 'static/js/main.js',
-        clean: true //每次打包前清空dist目录 在打包时会自动清空path目录
     },
     //加载器
     module: {
@@ -94,12 +93,12 @@ module.exports = {
     plugins: [
         new ESLintPlugin({
             // 检查src目录下所有文件
-            context: path.resolve(__dirname, 'src'),
+            context: path.resolve(__dirname, '../src'),
         }),
         new HtmlWebpackPlugin(
             {
                 // 新的html文件名 会自动放到output.path目录下 默认是index.html并且自动引入打包的js文件
-                template: path.resolve(__dirname, 'public/index.html'),
+                template: path.resolve(__dirname, '../public/index.html'),
             }
         )
     ],

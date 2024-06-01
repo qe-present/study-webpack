@@ -1,0 +1,36 @@
+name: 打包项目
+on:
+  workflow_dispatch:
+    inputs:
+        build:
+            description: '选择要构建的文件编号'
+            required: true
+            default: 'true'
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+      - name: Install dependencies
+        run: |
+          cd 01-base/base-01
+          npm install
+      - name: Build
+        run: |
+          cd 01-base/base-01
+          npm run build
+      - name: 部署 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: 01-build
+          folder: 01-build
+      - name: 上传
+        uses: actions/upload-artifact@v4
+        with:
+          name: 01-build
+          path: 01-build

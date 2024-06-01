@@ -9,5 +9,5 @@ import "./stylus/indedx.styl";
 
 const result = count(1, 2);
 console.log(result); // 3
-console.log(sum(1, 2)); // 3
+console.log(sum(1, 2, 3)); // 6
 console.log(111111); // 3
