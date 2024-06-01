@@ -18,9 +18,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22.x'
-      - name: Install rsync 📚
-        run: |
-          choco install rsync
+
       - name: 安装依赖
         run: |
           cd 01-base/base-01
@@ -30,13 +28,26 @@ jobs:
         run: |
           cd 01-base/base-01
           npm run build
-      - name: 部署 🚀
+      - name: 上传 Artifacts 🔺
+        uses: actions/upload-artifact@v1
+        with:
+          name: site
+          path: 01-build
+
+  deploy:
+    concurrency: ci-${{ github.ref }}
+    needs: [build] # The second job must depend on the first one to complete before running and uses ubuntu-latest instead of windows.
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: 下载 Artifacts 🔻 # The built project is downloaded into the 'site' folder.
+        uses: actions/download-artifact@v1
+        with:
+          name: site
+
+      - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: 01-build
-          folder: 01-build
-      - name: 上传
-        uses: actions/upload-artifact@v4
-        with:
-          name: 01-build
-          path: 01-build
+          folder: 'site'
