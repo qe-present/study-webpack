@@ -10,6 +10,7 @@ permissions:
   contents: write
 jobs:
   build:
+    name: 构建项目base-01 🏗️
     runs-on: windows-latest
     steps:
       - name: 读取仓库
@@ -29,12 +30,13 @@ jobs:
           cd 01-base/base-01
           npm run build
       - name: 上传 Artifacts 🔺
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: 01-build
           path: 01-build
 
   deploy:
+    name: 部署项目base-01 🚀
     concurrency: ci-${{ github.ref }}
     needs: [build] # The second job must depend on the first one to complete before running and uses ubuntu-latest instead of windows.
     runs-on: ubuntu-latest
