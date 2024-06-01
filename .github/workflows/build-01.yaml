@@ -42,9 +42,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: site
+      - name: 查看文件 📂
+        run: ls -R
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-
-          folder: 'site'
